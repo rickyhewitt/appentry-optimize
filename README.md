@@ -1,6 +1,6 @@
 appentry-optimize [0.3.2]
 
-A program to optimize .desktop files in freedesktop.org compliant environments.
+A program to remove unused languages in freedesktop.org compliant environments.
 
 Requires: Python 2.x
 
