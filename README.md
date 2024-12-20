@@ -1,6 +1,6 @@
 appentry-optimize [0.3.2]
 
-A program to remove unused languages in freedesktop.org compliant environments.
+A program to remove unused languages in freedesktop.org compatible environments (Xfce, Gnome, KDE, others).
 
 Requires: Python 2.x
 
