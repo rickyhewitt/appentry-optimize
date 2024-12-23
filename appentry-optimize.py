@@ -7,7 +7,7 @@
 ## Requires: Python 3.x
 ##
 ## Licensed under the GNU GPL
-## Programming by Ricky Hewitt [kahrn]
+## Programming by Ricky Hewitt - ricky@rickyhewitt.dev
 ##
 ## Changes in 0.3.3 (23/Dec/2024):
 ##  - Updated for python 3.x
@@ -29,7 +29,7 @@
 ##  - Only attempts to optimize .desktop files now.
 ##  - A check is now performed to help ensure a valid locale is given.
 ##
-## kahrny@gmail.com / kahrn.com / kahrn.wordpress.com
+## rickyhewitt.dev
  
 ## Import
 import os, sys
