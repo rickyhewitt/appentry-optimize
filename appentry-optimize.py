@@ -1,13 +1,20 @@
 #!/usr/bin/env python
-## appentry-optimize [0.3.1]
+## appentry-optimize [0.3.3]
 ##
-## A program to optimize .desktop files in freedesktop.org compliant
-## desktops.
+## A program to optimize .desktop files in freedesktop.org compatible
+## desktop environments (Gnome, KDE, Xfce).
 ##
-## Requires: Python 2.x
+## Requires: Python 3.x
 ##
 ## Licensed under the GNU GPL
 ## Programming by Ricky Hewitt [kahrn]
+##
+## Changes in 0.3.3 (23/Dec/2024):
+##  - Updated for python 3.x
+##
+## Changes in 0.3.2 (20/Dec/2024):
+##  - Adopted MIT License
+##  - Uploaded to github, added README.md
 ##
 ## Changes in 0.3.1 (22/Feb/2012):
 ##  - Added error handling for when KDE directory is not present
@@ -141,25 +148,25 @@ def CreateBackup(mode_backup):
     """This function will create a backup and put it into a gziped tape archive."""
     if mode_backup == 1 and AppEntry().CheckDir(app_path):
         try:
-            print "Attempting to create backup in "+app_path+" backup"
+            print("Attempting to create backup in "+app_path+" backup")
             os.chdir(app_path)
 
             # Create the backup directory if it does not exist.
             if AppEntry().CheckDir(app_path+"backup/") == 0:
                 os.system("mkdir ./backup/")
             else:
-                print "Backup directory already exists.. will continue to make backup."
+                print("Backup directory already exists.. will continue to make backup.")
            
             # Archive the files and place into backup/backup[date-time].tar.gz
             os.system("tar -czf " + filename_backup + " ./*")
             os.system("mv ./" + filename_backup + " ./backup/" + filename_backup)
-            print "Backup created in "+app_path+"backup/" + filename_backup
+            print("Backup created in "+app_path+"backup/" + filename_backup)
             return 1
         except:
-            print "Failed to create backup in CreateBackup().."
+            print("Failed to create backup in CreateBackup()..")
             return 0
     else:
-        print "Backup was disabled. Backup was not created."
+        print("Backup was disabled. Backup was not created.")
         return 1
 
 def CheckLocale(locale):
@@ -174,13 +181,12 @@ def CheckLocale(locale):
         if i == locale:
             return 1
     else:
-        print "Error!\nAn invalid locale was given. Locale \"" + locale + "\" was not found."
+        print("Error!\nAn invalid locale was given. Locale \"" + locale + "\" was not found.")
         sys.exit(1)
      
 def main():
     # Show starting messages and version information..
-    print "xfce4-appentry-optimize [0.3]"
-    print "Programmed by Ricky Hewitt [kahrn] - Licensed under GNU GPL.\n"
+    print("xfce4-appentry-optimize")
      
     # Create instance of class AppEntry..
     AppEntryInstance = AppEntry()
@@ -204,10 +210,10 @@ def main():
         if arg == "--enable-backup" or arg == "-b":
             mode_backup = 1
         if arg == "--help" or arg == "-h":
-            print "Usage:"
-            print "  --enable-verbosity, -v | Enable verbose mode for more output."
-            print "  --enable-backup, -b    | Enable backup."
-            print "  --help, -h             | Display help.\n"
+            print("Usage:")
+            print("  --enable-verbosity, -v | Enable verbose mode for more output.")
+            print("  --enable-backup, -b    | Enable backup.")
+            print("  --help, -h             | Display help.\n")
             sys.exit(1)
      
     # Search for the location of the .desktop files..
@@ -217,16 +223,16 @@ def main():
             filelist.append(app_path+i)
             currentFile=filelist.pop(0)
             if mode_verbosity == 1:
-                print "Optimizing \""+currentFile+"\":"
+                print("Optimizing \""+currentFile+"\":")
              
             # Deal with byte stat counting
             FileOriginalSize = os.path.getsize(currentFile)
             if mode_verbosity == 1:
-                print "  Current size is: "+str(FileOriginalSize)+" bytes"
-             
+                print("  Current size is: "+str(FileOriginalSize)+" bytes")
+                             
             # Optimize
             if mode_verbosity == 1:
-                print "  Optimizing locale data.."
+                print("  Optimizing locale data..")
             try:
                 AppEntryInstance.Optimize(currentFile)
             except:
@@ -236,7 +242,7 @@ def main():
             FileEndSize = os.path.getsize(currentFile)
             FileSavedBytes = (FileOriginalSize-FileEndSize)
             if mode_verbosity == 1:
-                print "  Bytes Saved: "+str(FileSavedBytes)+" bytes\n"
+                print("  Bytes Saved: "+str(FileSavedBytes)+" bytes\n")
             TotalOriginalBytes = TotalOriginalBytes + FileOriginalSize
             TotalSavedBytes = (TotalSavedBytes+FileSavedBytes)
              
@@ -245,9 +251,9 @@ def main():
             x = x+1
        
         # Display final results
-        print "\n  RESULTS:\n  Saved a total of "+str(TotalSavedBytes/1000)+" kB from " + str(TotalOriginalBytes/1000) + " kB, across "+str(x)+" shortcuts."
+        print("\nRESULTS:\n  Saved a total of "+str(TotalSavedBytes/1000)+" kB from " + str(TotalOriginalBytes/1000) + " kB, across "+str(x)+" shortcuts.")
     else:
-        sys.exit("\n  Something went wrong!\n")
+        sys.exit("Something went wrong!\n")
             
 if __name__ == "__main__":
     main()
