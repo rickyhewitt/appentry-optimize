@@ -1,12 +1,15 @@
-appentry-optimize [0.3.2]
+appentry-optimize [0.3.3]
 
 A tool for removing unused language data in freedesktop.org compatible environments (Xfce, Gnome, KDE, others). 
 
-Requires: Python 2.x
+Requires: Python 3.x
 
 Licensed under the MIT License
 Programming by Ricky Hewitt <ricky@rickyhewitt.dev>
 
+Changes in 0.3.3 (23/Dec/2024):
+  - Updated for python 3.x
+    
 Changes in 0.3.2 (20/12/2024):
   - Adopted MIT License
   - Uploaded to github, added README.md
