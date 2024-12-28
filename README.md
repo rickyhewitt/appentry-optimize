@@ -5,6 +5,7 @@ A tool for removing unused language data in freedesktop.org compatible environme
 Created by Ricky Hewitt <ricky@rickyhewitt.dev>
 
 Requires: Python 3.x
+
 License: MIT License
 
 Changes in 0.3.3 (23/Dec/2024):
