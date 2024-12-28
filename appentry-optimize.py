@@ -6,7 +6,7 @@
 ##
 ## Requires: Python 3.x
 ##
-## Licensed under the GNU GPL
+## License: MIT
 ## Programming by Ricky Hewitt - ricky@rickyhewitt.dev
 ##
 ## Changes in 0.3.3 (23/Dec/2024):
